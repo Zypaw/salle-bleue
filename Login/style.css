@@ -17,30 +17,32 @@ body{
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 400px;
+  width: 55vh;
+  height: 50vh;
   background: white;
-  border-radius: 10px;
-  box-shadow: 10px 10px 15px rgba(0,0,0,0.05);
+  border-radius: 1.375vh;
+  box-shadow: 1.375vh 1.375vh 2.0625vh rgba(0,0,0,0.05);
 }
 .center h1{
   text-align: center;
-  padding: 20px 0;
-  border-bottom: 1px solid silver;
+  padding: 2.75vh 0;
+  border-bottom: 0.1375vh solid silver;
+  font-size: 4.3vh;
 }
 .center form{
-  padding: 0 40px;
+  padding: 0 5.5vh;
   box-sizing: border-box;
 }
 form .txt_field{
   position: relative;
-  border-bottom: 2px solid #adadad;
-  margin: 30px 0;
+  border-bottom: 0.275vh solid #adadad;
+  margin: 4.125vh 0;
 }
 .txt_field input{
   width: 100%;
-  padding: 0 5px;
-  height: 40px;
-  font-size: 16px;
+  padding: 0 0.6875vh;
+  height: 5.5vh;
+  font-size: 2.2vh;
   border: none;
   background: none;
   outline: none;
@@ -48,26 +50,26 @@ form .txt_field{
 .txt_field label{
   position: absolute;
   top: 50%;
-  left: 5px;
+  left: 0.6875vh;
   color: #adadad;
   transform: translateY(-50%);
-  font-size: 16px;
+  font-size: 2.2vh;
   pointer-events: none;
   transition: .5s;
 }
 .txt_field span::before{
   content: '';
   position: absolute;
-  top: 40px;
+  top: 5.5vh;
   left: 0;
   width: 0%;
-  height: 2px;
+  height: 0.275vh;
   background: #2691d9;
   transition: .5s;
 }
 .txt_field input:focus ~ label,
 .txt_field input:valid ~ label{
-  top: -5px;
+  top: -0.6875vh;
   color: #2691d9;
 }
 .txt_field input:focus ~ span::before,
@@ -75,13 +77,13 @@ form .txt_field{
   width: 100%;
 }
 input[type="submit"]{
-  margin: 30px 0;
+  margin: 4.125vh 0;
   width: 100%;
-  height: 50px;
-  border: 1px solid;
+  height: 6.875vh;
+  border: 0.1375vh solid;
   background: #2691d9;
-  border-radius: 25px;
-  font-size: 18px;
+  border-radius: 3.4375vh;
+  font-size: 2.475vh;
   color: #e9f4fb;
   font-weight: 700;
   cursor: pointer;
@@ -93,8 +95,8 @@ input[type="submit"]:hover{
 }
 
 .alert {
-  padding: 20px;
+  padding: 2.475vh;
   background-color: #f44336;
   color: white;
-  margin-bottom: 15px;
+  margin-bottom: 2.0625vh;
 }

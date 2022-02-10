@@ -225,8 +225,14 @@ body.dark .sidebar.close .choosen:hover .icon{
     color: #2395e0;
 }
 
+a.index.choosen .text{
+    color: var(--text-color);
+}
+body.dark .index.choosen:hover .text{
+    color: var(--text-color);
+}
 
-.home .text
+.home .choosen
 { 
  
 animation-name: mon_anim;
@@ -355,12 +361,14 @@ body.dark .switch::before{
     width: calc(100% - 25vh);
     background-color: var(--body-color);
     transition: var(--tran-05);
+    overflow-x: hidden;
 }
 .home .text{
     font-size: 1.8vw;
     font-weight: 500;
     color: var(--text-color);
     padding: 1.2vh 6vh;
+    min-width: 200vh;
 }
 
 .sidebar.close ~ .home{

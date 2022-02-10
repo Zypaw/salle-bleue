@@ -63,3 +63,16 @@ function auth_check() {
     }
 }
 setInterval(auth_check, 200);
+
+function switch_page(page) {
+    actual_link = body.querySelector(".choosen")
+    actual_link.classList.toggle("choosen");
+    actual_page = body.querySelector(".home .choosen")
+    actual_page.style.display = "none"
+    actual_page.classList.toggle("choosen");
+    new_link = body.querySelector(page)
+    new_link.classList.toggle("choosen");
+    new_page = body.querySelector(".home "+page)
+    new_page.style.display = "block"
+    new_page.classList.toggle("choosen");
+}
