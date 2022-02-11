@@ -4,6 +4,10 @@ const body = document.querySelector('body'),
     searchBtn = body.querySelector(".search-box"),
     modeSwitch = body.querySelector(".toggle-switch"),
     modeText = body.querySelector(".mode-text");
+page = sessionStorage.page
+if (page != ".index" && page) {
+    switch_page(page)
+}
 sidebar_token = sessionStorage.sidebar
 if (sidebar_token == "open") {
     toggle_sidebar();
@@ -75,4 +79,5 @@ function switch_page(page) {
     new_page = body.querySelector(".home "+page)
     new_page.style.display = "block"
     new_page.classList.toggle("choosen");
+    sessionStorage.setItem("page", page)
 }
