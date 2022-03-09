@@ -17,7 +17,7 @@ if (theme_token == "night") {
     switch_theme();
 }
 function disconnect() {
-	sessionStorage.setItem("token", null);
+    sessionStorage.setItem("token", null);
     window.location.assign("../Login/index.html");
 }
 function auth_check() {
@@ -76,8 +76,42 @@ function switch_page(page) {
     actual_page.classList.toggle("choosen");
     new_link = body.querySelector(page)
     new_link.classList.toggle("choosen");
-    new_page = body.querySelector(".home "+page)
+    new_page = body.querySelector(".home " + page)
     new_page.style.display = "block"
     new_page.classList.toggle("choosen");
     sessionStorage.setItem("page", page)
 }
+
+const userCardTemplate = document.querySelector("[data-user-template]")
+const userCardContainer = document.querySelector("[data-user-cards-container]")
+const searchInput = document.querySelector("[data-search]")
+
+let users = []
+
+searchInput.addEventListener("input", e => {
+    switch_page(".eleves")
+    const value = e.target.value.toLowerCase()
+    users.forEach(user => {
+        const isVisible =
+            user.name.toLowerCase().includes(value) ||
+            user.nat.toLowerCase().includes(value)
+        user.element.classList.toggle("hide", !isVisible)
+    })
+})
+
+fetch("https://randomuser.me/api/?inc=name,location,picture&nat=FR&results=200")
+    .then(res => res.json())
+    .then(data => {
+        users = data.results.map(user => {
+            const card = userCardTemplate.content.cloneNode(true).children[0]
+            const image = card.querySelector("[data-image]")
+            const header = card.querySelector("[data-header]")
+            const body = card.querySelector("[data-body]")
+            image.src = user.picture.large
+            header.textContent = (`${user.name.first} ${user.name.last}`)
+            body.textContent = user.location.street.name
+            userCardContainer.append(card)
+            console.log((`${user.name.first} ${user.name.last} ${user.location.street.name}`))
+            return { name: (`${user.name.first} ${user.name.last}`), nat: user.location.street.name, element: card }
+        })
+    })

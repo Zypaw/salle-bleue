@@ -356,9 +356,9 @@ body.dark .switch::before{
     position: absolute;
     top: 0;
     top: 0;
-    left: 25vh;
+    left: 21vh;
     height: 100vh;
-    width: calc(100% - 25vh);
+    width: calc(100% - 21vh);
     background-color: var(--body-color);
     transition: var(--tran-05);
     overflow-x: hidden;

@@ -40,7 +40,7 @@
 
                 <li class="search-box">
                     <i class='bx bx-search icon'></i>
-                    <input type="text" placeholder="Search...">
+                    <input type="text" placeholder="Search..." data-search>
                 </li>
 
                 <ul class="menu-links">
@@ -275,9 +275,36 @@
                     box-shadow: 1vh 1vh 1.5vh rgba(0, 0, 0, 0.05);
                 }
 
+                #Vector_28 {
+                    animation: colorRotate 6s linear 0s infinite;
+                }
+
+                @keyframes colorRotate {
+                    from {
+                        fill: #6666ff;
+                    }
+
+                    10% {
+                        fill: #0099ff;
+                    }
+
+                    50% {
+                        fill: #00ff00;
+                    }
+
+                    75% {
+                        fill: #ff3399;
+                    }
+
+                    100% {
+                        fill: #6666ff;
+                    }
+                }
+
                 #souris {
                     animation: souris 10s ease-in-out infinite;
                 }
+
 
                 @keyframes souris {
 
@@ -326,6 +353,92 @@
         </section>
         <section class="eleves" style="display:none;">
             <div class="text">Bienvenue sur les eleves des salles bleues</div>
+            <div class="user-cards2" data-user-cards-container>
+                <template data-user-template>
+                    <div class="card2">
+                        <img data-image/>
+                        <h5 class="body" data-body></h5>
+                        <h3 class="header" data-header></h3>
+                    </div>
+                </template>
+            </div>
+            
+            <style>
+                .sidebar ~ .home .user-cards2 {
+                    display: grid;
+                    grid-template-columns: repeat(4, minmax(15vh, 15vh));
+                    column-gap: 28.1vh;
+                    row-gap: 5vh;
+                    margin-top: 2vh;
+                    transition: var(--tran-05);
+                }
+                .sidebar.close ~ .home .user-cards2 {
+                    column-gap: 32.5vh;
+                    transition: var(--tran-05);
+                }
+                .card2 {
+                    width: 35vh;
+                    height: 35vh;
+                    position: relative;
+                    left: 6vh;
+                    /* box-shadow: 0 3.5vh 6.5vh rgba(6, 34, 70, 0.6); */
+                    overflow: hidden;
+                    border-radius: 1vh
+                }
+
+                .card2 img {
+                    width: 100%;
+                    transition: 0.5s;
+                    filter: contrast(50%);
+                }
+
+                h3 {
+                    background-color: #5ca3ff;
+                    width: 60%;
+                    position: absolute;
+                    bottom: 8vh;
+                    right: -2%;
+                    padding: 1vh 0;
+                    color: #ffffff;
+                    text-align: center;
+                    letter-spacing: 0.1vh;
+                    font-size: 2vh;
+                    font-weight: 600;
+                    transform: skew(-5deg);
+                    transition: 0.3s;
+                }
+
+                h5 {
+                    background-color: #ffffff;
+                    width: 80%;
+                    padding: 1.2vh 0;
+                    text-align: center;
+                    font-size: 1.6vh;
+                    letter-spacing: 0.05vh;
+                    position: absolute;
+                    right: -2%;
+                    bottom: 3.7vh;
+                    transform: skew(-5deg);
+                    transition: 0.3s;
+                }
+
+                .card2:hover h3{
+                    right: -65%;
+                }
+                .card2:hover h5{
+                    right: -85%;
+                }
+
+                .card2:hover img {
+                    transform: scale(1.15);
+                    filter: contrast(100%);
+                }
+
+                .hide {
+                    display: none;
+                }
+            
+            </style>
         </section>
         <section class="database" style="display:none;">
             <div class="text">Bienvenue sur la base de données des salles bleues</div>
