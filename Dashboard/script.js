@@ -111,7 +111,31 @@ fetch("https://randomuser.me/api/?inc=name,location,picture&nat=FR&results=200")
             header.textContent = (`${user.name.first} ${user.name.last}`)
             body.textContent = user.location.street.name
             userCardContainer.append(card)
-            console.log((`${user.name.first} ${user.name.last} ${user.location.street.name}`))
             return { name: (`${user.name.first} ${user.name.last}`), nat: user.location.street.name, element: card }
         })
     })
+
+// Scroll to top :
+
+home = document.querySelector(".home");
+
+let calcScrollValue = () => {
+    let scrollProgress = document.getElementById("progress");
+    let progressValue = document.getElementById("progress-value");
+    let pos = home.scrollTop;
+    let calcHeight =
+      home.scrollHeight -
+      home.clientHeight;
+    let scrollValue = Math.round((pos * 100) / calcHeight);
+    if (pos > 100) {
+      scrollProgress.style.display = "grid";
+    } else {
+      scrollProgress.style.display = "none";
+    }
+    scrollProgress.addEventListener("click", () => {
+      home.scrollTop = 0;
+    });
+    scrollProgress.style.background = `conic-gradient(#2395e0 ${scrollValue}%, #d7d7d7 ${scrollValue}%)`;
+  };
+  home.onscroll = calcScrollValue;
+  home.onload = calcScrollValue;

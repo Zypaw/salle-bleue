@@ -29,6 +29,7 @@ body{
     transition: var(--tran-05);
 }
 
+
 ::selection{
     background-color: var(--primary-color);
     color: #fff;
@@ -113,6 +114,7 @@ a:active { text-decoration: none; }
 .sidebar header .image-text{
     display: flex;
     align-items: center;
+    cursor: pointer;
 }
 .sidebar header .logo-text{
     display: flex;
@@ -154,7 +156,7 @@ header .image-text .profession{
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 2.2vh;
+    font-size: 1.7vh;
     cursor: pointer;
     transition: var(--tran-05);
 }
@@ -378,4 +380,55 @@ body.dark .switch::before{
 }
 body.dark .home .text{
     color: var(--text-color);
+}
+
+/* Scroll to top */
+
+#progress {
+    position: fixed;
+    bottom: 2vh;
+    right: 3vh;
+    height: 7vh;
+    width: 7vh;
+    display: none;
+    place-items: center;
+    border-radius: 50%;
+    box-shadow: 0 0 1vh rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+  }
+#progress-value {
+    display: block;
+    height: calc(100% - 1.5vh);
+    width: calc(100% - 1.5vh);
+    background-color: #ffffff;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-size: 3.5vh;
+    color: #001a2e;
+}
+
+body.dark #progress-value {
+    background-color: var(--body-color);
+    color: #FFF;
+}
+
+/* width */
+.home::-webkit-scrollbar {
+    width: 1.5vh;
+}
+
+/* Track */
+.home::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+}
+
+/* Handle */
+.home::-webkit-scrollbar-thumb {
+    background: #33719b;
+    border-radius: 10px;
+}
+.home::-webkit-scrollbar-thumb:hover {
+    background: #2395e0;
 }
