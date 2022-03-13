@@ -426,9 +426,17 @@ body.dark #progress-value {
 
 /* Handle */
 .home::-webkit-scrollbar-thumb {
-    background: #33719b;
+    background: #2395e0;
     border-radius: 10px;
 }
 .home::-webkit-scrollbar-thumb:hover {
-    background: #2395e0;
+    background: #33719b;
+}
+
+.dark .home::-webkit-scrollbar-thumb {
+    background: #c4c4c4;
+}
+.dark .home::-webkit-scrollbar-thumb:hover {
+    background: #a1a1a1;
+    color: #3f3f3f;
 }

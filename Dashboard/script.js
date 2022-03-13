@@ -4,6 +4,37 @@ const body = document.querySelector('body'),
     searchBtn = body.querySelector(".search-box"),
     modeSwitch = body.querySelector(".toggle-switch"),
     modeText = body.querySelector(".mode-text");
+
+// Scroll to top :
+
+home = document.querySelector(".home");
+
+let calcScrollValue = () => {
+    let scrollProgress = document.getElementById("progress");
+    let progressValue = document.getElementById("progress-value");
+    let pos = home.scrollTop;
+    let calcHeight =
+      home.scrollHeight -
+      home.clientHeight;
+    let scrollValue = Math.round((pos * 100) / calcHeight);
+    if (pos > 100) {
+      scrollProgress.style.display = "grid";
+    } else {
+      scrollProgress.style.display = "none";
+    }
+    scrollProgress.addEventListener("click", () => {
+      home.scrollTop = 0;
+    });
+    if (body.classList.contains("dark")) {
+        scrollProgress.style.background = `conic-gradient(#c4c4c4 ${scrollValue}%, #242526 ${scrollValue}%)`;
+    } else {
+        scrollProgress.style.background = `conic-gradient(#2395e0 ${scrollValue}%, #d7d7d7 ${scrollValue}%)`;
+    }
+  };
+
+  home.onscroll = calcScrollValue;
+  home.onload = calcScrollValue;
+    
 page = sessionStorage.page
 if (page != ".index" && page) {
     switch_page(page)
@@ -55,6 +86,7 @@ function switch_theme() {
         sessionStorage.setItem("theme", "day")
         modeText.innerText = "Nuit";
     }
+    calcScrollValue();
 }
 function disconnect() {
     sessionStorage.removeItem("token");
@@ -99,43 +131,18 @@ searchInput.addEventListener("input", e => {
     })
 })
 
-fetch("https://randomuser.me/api/?inc=name,location,picture&nat=FR&results=200")
+fetch("http://192.168.1.78:3000/eleves")
     .then(res => res.json())
     .then(data => {
-        users = data.results.map(user => {
+        users = data.map(user => {
             const card = userCardTemplate.content.cloneNode(true).children[0]
             const image = card.querySelector("[data-image]")
             const header = card.querySelector("[data-header]")
             const body = card.querySelector("[data-body]")
-            image.src = user.picture.large
-            header.textContent = (`${user.name.first} ${user.name.last}`)
-            body.textContent = user.location.street.name
+            image.src = user.picture_url
+            header.textContent = user.grade
+            body.textContent = (`${user.first_name} ${user.last_name}`)
             userCardContainer.append(card)
-            return { name: (`${user.name.first} ${user.name.last}`), nat: user.location.street.name, element: card }
+            return { name: (`${user.first_name} ${user.last_name}`), grade: user.grade, element: card }
         })
     })
-
-// Scroll to top :
-
-home = document.querySelector(".home");
-
-let calcScrollValue = () => {
-    let scrollProgress = document.getElementById("progress");
-    let progressValue = document.getElementById("progress-value");
-    let pos = home.scrollTop;
-    let calcHeight =
-      home.scrollHeight -
-      home.clientHeight;
-    let scrollValue = Math.round((pos * 100) / calcHeight);
-    if (pos > 100) {
-      scrollProgress.style.display = "grid";
-    } else {
-      scrollProgress.style.display = "none";
-    }
-    scrollProgress.addEventListener("click", () => {
-      home.scrollTop = 0;
-    });
-    scrollProgress.style.background = `conic-gradient(#2395e0 ${scrollValue}%, #d7d7d7 ${scrollValue}%)`;
-  };
-  home.onscroll = calcScrollValue;
-  home.onload = calcScrollValue;
